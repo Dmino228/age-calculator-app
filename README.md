@@ -44,8 +44,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Solution URL: [https://www.frontendmentor.io/solutions/age-calculator-app-ZM2FvYABT1](https://www.frontendmentor.io/solutions/age-calculator-app-ZM2FvYABT1)
+- Live Site URL: [https://age-calculator-app-taupe.vercel.app](https://age-calculator-app-taupe.vercel.app)
 
 ## My process
 
