@@ -4,8 +4,8 @@ import Result from './components/result';
 
 export default function App() {
     return (
-        <div className="flex justify-center items-center flex-col min-h-screen bg-off-white">
-            <main className="h-[650px] w-[900px] bg-white p-16 rounded-3xl rounded-br-[25%]">
+        <div className="flex justify-center items-center flex-col min-h-screen bg-off-white p-3">
+            <main className="h-[500px] w-[350px] bg-white p-8 rounded-3xl rounded-br-[25%] lg:w-[900px] lg:h-[650px] lg:p-16">
                 <Form />
                 <Result />
             </main>

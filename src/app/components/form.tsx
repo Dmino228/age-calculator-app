@@ -113,7 +113,7 @@ export default function Form() {
 
     return (
         <form onSubmit={handleSubmit}>
-            <div className="flex flex-row gap-8">
+            <div className="flex flex-row gap-4 lg:gap-8">
                 <FormField 
                     error={error.value}
                     name="day"
@@ -132,9 +132,9 @@ export default function Form() {
                     handleChange={handleChange}
                 />
             </div>
-            <div className="mt-8 mb-8 relative">
-                <hr className="w-[700px] border-light-grey" />
-                <button className="bg-primary-purple w-20 h-20 grid place-items-center rounded-full absolute right-1 top-[-40px] hover:bg-off-black transition">
+            <div className="mt-8 mb-8 grid place-items-center relative">
+                <hr className="border-light-grey w-[100%]" />
+                <button className="bg-primary-purple w-20 h-20 grid place-items-center rounded-full absolute top-[-2.5rem] hover:bg-off-black transition lg:right-0 lg:w-24 lg:h-24 lg:top-[-3rem]">
                     <Image 
                         src="icon-arrow.svg" 
                         alt="icon arrow" 

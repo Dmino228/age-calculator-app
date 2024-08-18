@@ -16,7 +16,7 @@ export default function Result() {
     useSignals()
 
     return (
-        <div className="text-8xl text-off-black font-bold italic leading-[1.1]">
+        <div className="text-5xl text-off-black font-bold italic leading-[1.1] mt-16 text-nowrap lg:text-8xl">
             <span className="text-primary-purple">{
                 result.value.year !== undefined ?
                 <CountUp
