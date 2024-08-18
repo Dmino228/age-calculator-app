@@ -40,7 +40,8 @@ Users should be able to:
 
 ### Screenshot
 
-![](./screenshot.jpg)
+![](./screencapture-localhost-3000-2024-08-18-19_21_27.png)
+![](./screencapture-localhost-3000-2024-08-18-19_21_56.png)
 
 ### Links
 
