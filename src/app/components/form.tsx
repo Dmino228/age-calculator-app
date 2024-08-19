@@ -43,24 +43,43 @@ function handleChange(e: ChangeEvent<HTMLInputElement>) {
     }
 }
 
+function validateField(fieldName: string, errorMessage: string, minValue?: number, maxValue?: number) {
+    // @ts-expect-error:
+    if (!data.value[fieldName] || data.value[fieldName] < minValue || data.value[fieldName] > maxValue) {
+        error.value = {
+            ...error.value,
+            [fieldName]: {
+                message: errorMessage,
+                active: true,
+            }
+        }
+    }
+}
+
+function calculateDateDifference(startDate: Date, endDate: Date) {
+    let years = endDate.getFullYear() - startDate.getFullYear();
+    let months = endDate.getMonth() - startDate.getMonth() + 1;
+    let days = endDate.getDate() - startDate.getDate();
+
+    if (days < 0) {
+        months--;
+        const lastMonth = new Date(endDate.getFullYear(), endDate.getMonth(), 0);
+        days += lastMonth.getDate();
+    }
+
+    if (months < 0) {
+        years--;
+        months += 12;
+    }
+
+    return { years, months, days };
+}
+
 function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault()
     const { day, month, year } = data.value
 
     error.value = initErrorState
-
-    function validateField(fieldName: string, errorMessage: string, minValue?: number, maxValue?: number) {
-        // @ts-expect-error:
-        if (!data.value[fieldName] || data.value[fieldName] < minValue || data.value[fieldName] > maxValue) {
-            error.value = {
-                ...error.value,
-                [fieldName]: {
-                    message: errorMessage,
-                    active: true,
-                }
-            }
-        }
-    }
 
     validateField("day", "This field is required")
     validateField("month", "This field is required")
@@ -83,10 +102,10 @@ function handleSubmit(e: FormEvent<HTMLFormElement>) {
     }
 
     const date = new Date(year, month, day)
-    const now = Date.now()
-    const diff = now - date.valueOf()
+    const now = new Date()
+    const diff = calculateDateDifference(date, now)
 
-    if (diff < 0) {
+    if (diff.years < 0) {
         error.value = {
             ...error.value,
             year: {
@@ -98,14 +117,7 @@ function handleSubmit(e: FormEvent<HTMLFormElement>) {
 
     if (error.value.active || error.value.day.active || error.value.month.active || error.value.year.active) return
 
-    let days = Math.floor(diff / (1000 * 60 * 60 * 24))
-    let months = Math.floor(days / 30)
-    let years = Math.floor(months / 12)
-
-    days %= 30
-    months %= 12
-
-    result.value = {day: days, month: months, year: years}
+    result.value = {day: diff.days, month: diff.months, year: diff.years}
 }
 
 export default function Form() {
